@@ -29,7 +29,7 @@
   from tortoise.models import Model
 
   class User(Model):
-     id = fields.BigIntField(pk=True)
+     id = fields.BigIntField(pk=True, generated=False)
      email = fields.CharField(max_length=255, unique=True)
      password = fields.CharField(max_length=255)
      created_at = fields.DatetimeField(auto_now_add=True)

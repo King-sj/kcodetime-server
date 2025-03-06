@@ -14,7 +14,7 @@ class User(Model):
   role 用户角色
   name 用户姓名
   '''
-  id = fields.BigIntField(pk=True)
+  id = fields.BigIntField(pk=True, generated=False)
   email = fields.CharField(max_length=255, unique=True)
   password = fields.CharField(max_length=255)
   created_at = fields.DatetimeField(auto_now_add=True)

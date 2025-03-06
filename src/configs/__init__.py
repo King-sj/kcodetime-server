@@ -17,3 +17,4 @@ from .redis_prefix import Config as RedisPrefixConfig
 from .logging import Config as LoggingConfig
 from .email import Config as EmailConfig
 from .env import Config as EnvConfig
+from .redis_keyname import Config as RedisKeynameConfig
