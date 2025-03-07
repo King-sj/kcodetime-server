@@ -1,6 +1,6 @@
 from pydantic import BaseModel, field_validator, model_validator
 from typing import List
-
+from datetime import datetime
 
 class LanguageRequest(BaseModel):
   name: str
@@ -55,4 +55,20 @@ class CodeActivityRequest(BaseModel):
   def validate_time_order(self):
     if self.start_time_stamp >= self.end_time_stamp:
         raise ValueError("start_time_stamp must before end_time_stamp")
+    return self
+
+class CodeActivitiesRequest(BaseModel):
+  activities: List[CodeActivityRequest]
+
+class DateRangeRequest(BaseModel):
+  '''
+  yyy-mm-dd
+  '''
+  date_from: datetime
+  date_to: datetime
+
+  @model_validator(mode='after')
+  def validate_time_order(self):
+    if self.date_from >= self.date_to:
+        raise ValueError("date_from must before date_to")
     return self
